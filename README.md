@@ -1,15 +1,9 @@
 
-# IUBAT Super Shop Billing System
+# IUBAT Super Shop Billing System 👋
+
+![image](https://github.com/user-attachments/assets/ef95920a-f3e1-4b39-b028-8a4e180d9836)
 
 A C++ application simulating a billing system for **IUBAT Super Shop**. This project demonstrates Object-Oriented Programming (OOP) principles and utilizes file handling to manage product data and customer billing.
-
-## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Structure](#structure)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
 
 
 ## Features
@@ -47,10 +41,6 @@ A C++ application simulating a billing system for **IUBAT Super Shop**. This pro
 
 ## Structure
 
-- **Classes**:
-  - `Product`: Represents items available in the shop.
-  - `Customer`: Manages customer information.
-  - `Bill`: Calculates and manages billing information.
   
 - **File Handling**:
   - Data is saved in text files to keep track of inventory and customer bills.
