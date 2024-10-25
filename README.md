@@ -1,5 +1,5 @@
 
-# IUBAT Super Shop Billing System 👋
+# Super Shop Billing System 👋
 
 ![image](https://github.com/user-attachments/assets/ef95920a-f3e1-4b39-b028-8a4e180d9836)
 
