@@ -3,6 +3,9 @@
 
 ![image](https://github.com/user-attachments/assets/ef95920a-f3e1-4b39-b028-8a4e180d9836)
 
+![image](https://github.com/user-attachments/assets/b481968a-e6c3-4363-a4e3-f85c5172b66a)
+
+
 A C++ application simulating a billing system for **IUBAT Super Shop**. This project demonstrates Object-Oriented Programming (OOP) principles and utilizes file handling to manage product data and customer billing.
 
 
