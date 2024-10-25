@@ -1,8 +1,0 @@
-	Dove : 90 : 3
-
-	Facewash : 300 : 1
-
-	Perfume : 800 : 2
-
-	Noodles : 200 : 1
-

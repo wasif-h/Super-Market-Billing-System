@@ -7,8 +7,10 @@
 #include <string>
 using namespace std;
 
+// this class organizes all the item name, price and quantity of products based on customers
 class Bill
 {
+
 private:
     string item;
     int price, quantity;
@@ -20,6 +22,8 @@ public:
         this->price = price;
         this->quantity = quantity;
     }
+
+    // setter and getter function to access the private attributes
 
     void setitem(string item)
     {
@@ -51,6 +55,7 @@ public:
     }
 };
 
+// this function adds item and details to the cart
 void additem(Bill obj)
 {
     bool close = false;
@@ -110,6 +115,7 @@ void additem(Bill obj)
     }
 }
 
+// usage - it shows all the items and quantity of any customer cart and also caluculates the total amount
 void printbill()
 {
     bool close = false;
@@ -172,7 +178,8 @@ void printbill()
 int main()
 {
 
-    Bill b1;
+    // created an instance of any customer
+    Bill b1; 
 
     bool exit = false;
     while (!exit)
@@ -197,7 +204,7 @@ int main()
         {
             system("cls");
             additem(b1);
-            Sleep(2000);
+            Sleep(1000);
         }
         else if (choice == 2)
         {
@@ -217,6 +224,8 @@ int main()
             cout << "Invalid Input - Try Again";
         }
     }
+
+    // it clears all data of  totalbill.txt after the program ends
     remove("totalbill.txt");
 
     return 0;
