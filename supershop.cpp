@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <windows.h>
 #include <string>
 using namespace std;
 
@@ -104,7 +103,6 @@ void additem(Bill obj)
         {
             system("cls");
             cout << "\t--- Back to Main Menu !!" << endl;
-            Sleep(1000);
 
             close = true;
         }
@@ -140,25 +138,25 @@ void printbill()
             }
             else
             {
-            string line;
+                string line;
 
-            while (getline(in, line))
-            {
-                cout << line << endl;
-                stringstream ss;
-                ss << line;
-                string itemName;
-                int itemRate, itemQuant;
-                char delimiter;
-                if (ss >> itemName >> delimiter >> itemRate >> delimiter >> itemQuant)
+                while (getline(in, line))
                 {
-                    total += (itemRate * itemQuant);
+                    cout << line << endl;
+                    stringstream ss;
+                    ss << line;
+                    string itemName;
+                    int itemRate, itemQuant;
+                    char delimiter;
+                    if (ss >> itemName >> delimiter >> itemRate >> delimiter >> itemQuant)
+                    {
+                        total += (itemRate * itemQuant);
+                    }
                 }
-            }
-            cout << "\t--------------------------" << endl;
-            cout << "\tTotal Bill = " << total << " BDT\n\n"
-                 << endl;
-            in.close();
+                cout << "\t--------------------------" << endl;
+                cout << "\tTotal Bill = " << total << " BDT\n\n"
+                     << endl;
+                in.close();
             }
         }
         else if (choice == 2)
@@ -166,7 +164,6 @@ void printbill()
             close = true;
             system("cls");
             cout << "--- Back to Main Menu !!" << endl;
-            Sleep(2000);
         }
         else
         {
@@ -179,7 +176,7 @@ int main()
 {
 
     // created an instance of any customer
-    Bill b1; 
+    Bill b1;
 
     bool exit = false;
     while (!exit)
@@ -196,7 +193,6 @@ int main()
         cout << "  *************************\n\n";
         cout << "\tEnter Choice : ";
 
-
         int choice;
         cin >> choice;
 
@@ -204,7 +200,6 @@ int main()
         {
             system("cls");
             additem(b1);
-            Sleep(1000);
         }
         else if (choice == 2)
         {
@@ -216,7 +211,7 @@ int main()
             system("cls");
             cout << "--- Thank You Sir / Maam" << endl;
             cout << "--- Assalamualaikum\n\n";
-            Sleep(1000);
+
             exit = true;
         }
         else
