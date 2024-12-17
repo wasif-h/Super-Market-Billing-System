@@ -206,7 +206,7 @@ int main() {
 
         // Display the main menu
         cout << "========================================" << endl;
-        cout << "      WELCOME TO THE SUPER SHOP         " << endl;
+        cout << "            IUBAT SUPER SHOP            " << endl;
         cout << "========================================" << endl;
         cout << " [1] Start Shopping" << endl;
         cout << " [2] View Total Bill" << endl;
