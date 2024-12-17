@@ -1,231 +1,241 @@
-// Author : Wasif Hossain <https://www.linkedin.com/in/wasif-h>
-// Project  : Super Shop Billing System
+// Author - Md. Wasif Hossain
+// Course - CSC 284    Section - G
+// ID - 23303320
+// Email - wasif.hx@gmail.com
+
+// Project - IUBAT SUPER SHOP - USING C++ and OOP concepts
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <windows.h>
 #include <string>
+
 using namespace std;
 
-// this class organizes all the item name, price and quantity of products based on customers
-class Bill
-{
-
+// Class to represent a Bill item and its attributes (name, price, quantity)
+class Bill {
 private:
-    string item;
-    int price, quantity;
+    // Private attributes to store item details
+    string itemName;
+    int itemPrice;
+    int itemQuantity;
 
 public:
-    Bill(string item = "", int price = 0, int quantity = 0)
-    {
-        this->item = item;
-        this->price = price;
-        this->quantity = quantity;
+    // Constructor to initialize a Bill object with default or specific values
+    Bill(string itemName = "", int itemPrice = 0, int itemQuantity = 0) {
+        this->itemName = itemName;
+        this->itemPrice = itemPrice;
+        this->itemQuantity = itemQuantity;
     }
 
-    // setter and getter function to access the private attributes
-
-    void setitem(string item)
-    {
-        this->item = item;
+    // Setter methods to update item attributes
+    void setItemName(string itemName) {
+        this->itemName = itemName;
     }
 
-    void setprice(int price)
-    {
-        this->price = price;
+    void setItemPrice(int itemPrice) {
+        this->itemPrice = itemPrice;
     }
 
-    void setquantity(int quantity)
-    {
-        this->quantity = quantity;
+    void setItemQuantity(int itemQuantity) {
+        this->itemQuantity = itemQuantity;
     }
 
-    string getitem()
-    {
-        return item;
+    // Getter methods to retrieve item attributes
+    string getItemName() {
+        return itemName;
     }
 
-    int getprice()
-    {
-        return price;
+    int getItemPrice() {
+        return itemPrice;
     }
-    int getquantity()
-    {
-        return quantity;
+
+    int getItemQuantity() {
+        return itemQuantity;
     }
 };
 
-// this function adds item and details to the cart
-void additem(Bill obj)
-{
-    bool close = false;
-    while (!close)
-    {
-        system("cls");
-        cout << "\t1. Add Item" << endl;
-        cout << "\t2. Close" << endl;
-        cout << "\tEnter Choice : ";
-        int choice;
-        cin >> choice;
+// Function to handle adding items to the shopping cart
+void addItemToCart(Bill customerBill) {
+    // Variable to manage the loop for adding items
+    bool continueAddingItems = true;
 
-        if (choice == 1)
-        {
-            system("cls");
-            string item;
-            int price, quantity;
-            cout << "\tEnter item name : ";
-            cin >> item;
-            obj.setitem(item);
+    // Loop to handle the add-to-cart menu
+    while (continueAddingItems) {
+        system("cls"); // Clear the terminal screen for better visibility
 
-            cout << "\tEnter price : ";
-            cin >> price;
-            obj.setprice(price);
+        // Display the add-to-cart menu
+        cout << "========================================" << endl;
+        cout << "            Add to Cart Menu            " << endl;
+        cout << "========================================" << endl;
+        cout << " [1] Add Item to Cart" << endl;
+        cout << " [2] Return to Main Menu" << endl;
+        cout << "========================================" << endl;
+        cout << "Enter your choice: ";
+        int userChoice;
+        cin >> userChoice;
 
-            cout << "\tEnter quantity : ";
-            cin >> quantity;
-            obj.setquantity(quantity);
+        // Handle user choice to add items or return to main menu
+        if (userChoice == 1) {
+            system("cls"); // Clear the screen
 
-            ofstream my_file("totalbill.txt", ios::app);
-            if (!my_file)
-            {
-                cout << "Error, Can't Open Billing File" << endl;
+            // Prompt user to input item details
+            cout << "========================================" << endl;
+            cout << "           Add Item Details             " << endl;
+            cout << "========================================" << endl;
+
+            string itemNameInput;
+            int itemPriceInput;
+            int itemQuantityInput;
+
+            cout << "Enter item name: ";
+            cin.ignore(); // Ignore leftover input from previous cin
+            getline(cin, itemNameInput);
+
+            cout << "Enter item price: ";
+            cin >> itemPriceInput;
+
+            cout << "Enter item quantity: ";
+            cin >> itemQuantityInput;
+
+            // Update the Bill object with input values
+            customerBill.setItemName(itemNameInput);
+            customerBill.setItemPrice(itemPriceInput);
+            customerBill.setItemQuantity(itemQuantityInput);
+
+            // Append the item details to the billing file
+            ofstream outputFile("totalbill.txt", ios::app);
+            if (!outputFile.is_open()) {
+                cout << "Error: Unable to open billing file." << endl;
+            } else {
+                outputFile << customerBill.getItemName() << "|" << customerBill.getItemPrice() << "|" << customerBill.getItemQuantity() << endl;
+                outputFile.close();
+                cout << "Item added to cart successfully!" << endl;
             }
-            else
-            {
-                my_file << "\t" << obj.getitem() << " : "
-                        << obj.getprice() << " : "
-                        << obj.getquantity() << endl
-                        << endl;
-
-                my_file.close();
-            }
-        }
-        else if (choice == 2)
-        {
+        } else if (userChoice == 2) {
+            // Return to the main menu
             system("cls");
-            cout << "\t--- Back to Main Menu !!" << endl;
-            Sleep(1000);
-
-            close = true;
-        }
-        else
-        {
-            cout << "Invalid Entry" << endl;
+            continueAddingItems = false;
+            cout << "Returning to the main menu..." << endl;
+        } else {
+            cout << "Invalid choice. Please try again." << endl;
         }
     }
 }
 
-// usage - it shows all the items and quantity of any customer cart and also caluculates the total amount
-void printbill()
-{
-    bool close = false;
-    while (!close)
-    {
-        int choice;
-        cout << "\t1. Total Bill" << endl;
-        cout << "\t2. Back to Menu" << endl;
-        cout << "\tEnter Choice : ";
-        cin >> choice;
+// Function to display the total bill and item details
+void printTotalBill() {
+    // Variable to manage the loop for viewing the bill
+    bool continueViewingBill = true;
 
-        if (choice == 1)
-        {
-            int total = 0;
+    // Loop to handle the view-bill menu
+    while (continueViewingBill) {
+        // Display the view-bill menu
+        cout << "========================================" << endl;
+        cout << "            View Total Bill             " << endl;
+        cout << "========================================" << endl;
+        cout << " [1] View Bill" << endl;
+        cout << " [2] Return to Main Menu" << endl;
+        cout << "========================================" << endl;
+        cout << "Enter your choice: ";
+        int userChoice;
+        cin >> userChoice;
 
+        // Handle user choice to view the bill or return to main menu
+        if (userChoice == 1) {
             system("cls");
 
-            ifstream in("totalbill.txt");
-            if (!in)
-            {
-                cout << "Please buy something before\nchecking your Bill !!\n\n";
-            }
-            else
-            {
-            string line;
+            int totalAmount = 0; // Variable to store the total bill amount
+            ifstream inputFile("totalbill.txt");
 
-            while (getline(in, line))
-            {
-                cout << line << endl;
-                stringstream ss;
-                ss << line;
-                string itemName;
-                int itemRate, itemQuant;
-                char delimiter;
-                if (ss >> itemName >> delimiter >> itemRate >> delimiter >> itemQuant)
-                {
-                    total += (itemRate * itemQuant);
+            if (!inputFile.is_open()) {
+                cout << "No items found in the cart. Add items first!" << endl;
+            } else {
+                cout << "========================================" << endl;
+                cout << "            Items Purchased             " << endl;
+                cout << "========================================" << endl;
+
+                string line;
+
+                // Read item details from the file and display them
+                while (getline(inputFile, line)) {
+                    stringstream lineStream(line);
+                    string itemNameFromFile;
+                    int itemPriceFromFile;
+                    int itemQuantityFromFile;
+
+                    getline(lineStream, itemNameFromFile, '|');
+                    lineStream >> itemPriceFromFile;
+                    lineStream.ignore();
+                    lineStream >> itemQuantityFromFile;
+
+                    int totalPriceForItem = itemPriceFromFile * itemQuantityFromFile;
+
+                    // Display individual item details and total price for that item
+                    cout << itemNameFromFile << " - " << itemPriceFromFile << " x " << itemQuantityFromFile << " = " << totalPriceForItem << endl;
+
+                    totalAmount += totalPriceForItem; // Add to total bill
                 }
+
+                cout << "========================================" << endl;
+                cout << "Total Amount: " << totalAmount << endl;
+                cout << "========================================" << endl;
+
+                inputFile.close();
             }
-            cout << "\t--------------------------" << endl;
-            cout << "\tTotal Bill = " << total << " BDT\n\n"
-                 << endl;
-            in.close();
-            }
-        }
-        else if (choice == 2)
-        {
-            close = true;
+        } else if (userChoice == 2) {
+            // Return to the main menu
             system("cls");
-            cout << "--- Back to Main Menu !!" << endl;
-            Sleep(2000);
-        }
-        else
-        {
-            cout << "Invalid Entry";
+            continueViewingBill = false;
+            cout << "Returning to the main menu..." << endl;
+        } else {
+            cout << "Invalid choice. Please try again." << endl;
         }
     }
 }
-// <<<---------  main function   --------->>>
-int main()
-{
 
-    // created an instance of any customer
-    Bill b1; 
+// Main function to run the Super Shop System program
+int main() {
+    Bill customerBill; // Create a Bill object for the customer
 
-    bool exit = false;
-    while (!exit)
-    {
+    bool exitProgram = false; // Variable to manage the main menu loop
+
+    // Loop to handle the main menu
+    while (!exitProgram) {
         system("cls");
 
-        cout << "  *************************" << endl;
-        cout << "  IUBAT SUPER SHOP - UTTARA" << endl;
-        cout << "  *************************" << endl;
-        cout << "\t1. Start Shopping" << endl;
-        cout << "\t2. Print Total Bill" << endl;
-        cout << "\t3. Exit" << endl
-             << endl;
-        cout << "  *************************\n\n";
-        cout << "\tEnter Choice : ";
+        // Display the main menu
+        cout << "========================================" << endl;
+        cout << "      WELCOME TO THE SUPER SHOP         " << endl;
+        cout << "========================================" << endl;
+        cout << " [1] Start Shopping" << endl;
+        cout << " [2] View Total Bill" << endl;
+        cout << " [3] Exit Program" << endl;
+        cout << "========================================" << endl;
+        cout << "Enter your choice: ";
+        int mainMenuChoice;
+        cin >> mainMenuChoice;
 
-
-        int choice;
-        cin >> choice;
-
-        if (choice == 1)
-        {
+        // Handle main menu choices
+        if (mainMenuChoice == 1) {
+            // Start shopping by adding items to the cart
             system("cls");
-            additem(b1);
-            Sleep(1000);
-        }
-        else if (choice == 2)
-        {
+            addItemToCart(customerBill);
+        } else if (mainMenuChoice == 2) {
+            // View the total bill
             system("cls");
-            printbill();
-        }
-        else if (choice == 3)
-        {
+            printTotalBill();
+        } else if (mainMenuChoice == 3) {
+            // Exit the program
             system("cls");
-            cout << "--- Thank You Sir / Maam" << endl;
-            cout << "--- Assalamualaikum\n\n";
-            Sleep(1000);
-            exit = true;
-        }
-        else
-        {
-            cout << "Invalid Input - Try Again";
+            exitProgram = true;
+            cout << "Thank you for using the Super Shop System. Goodbye!" << endl << endl;
+        } else {
+            cout << "Invalid input. Please enter a valid choice."<< endl << endl;
         }
     }
 
-    // it clears all data of  totalbill.txt after the program ends
+    // Remove the billing file after program execution
     remove("totalbill.txt");
 
     return 0;
