@@ -119,15 +119,70 @@ The entry point of the application.
 
 ---
 
+## 📊 **Example of Bill Input**:
+```
+========================================
+            IUBAT SUPER SHOP
+========================================
+ [1] Start Shopping
+ [2] View Total Bill
+ [3] Exit Program
+========================================
+Enter your choice: 
+========================================
+
+```
+## 📊 **Example of Selecting Option 1**:
+```
+========================================
+            Add to Cart Menu
+========================================
+ [1] Add Item to Cart
+ [2] Return to Main Menu
+========================================
+Enter your choice:
+
+```
+
+```
+========================================
+           Add Item Details
+========================================
+Enter item name: Coca Cola
+Enter item price: 45
+Enter item quantity: 3
+```
+
+
+
+## 📊 **Example of Selecting Option 2**:
+```
+========================================
+            View Total Bill
+========================================
+ [1] View Bill
+ [2] Return to Main Menu
+========================================
+Enter your choice:
+
+```
+
+## 📊 **Example of Bill Output**:
+```
+========================================
+            Items Purchased
+========================================
+Coca Cola - 45 x 3 = 135
+A4 Paper - 2 x 100 = 200
+========================================
+Total Amount: 335
+========================================
+
+```
+
 ## 🙌 Acknowledgments
 Special thanks to everyone who inspired the development of this project. Contributions and feedback are always welcome!
 
----
-
-## 📜 License
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 ### 👨‍💻 Author
 **Wasif Hossain**  
@@ -137,12 +192,3 @@ GitHub: [wasif-h](https://github.com/wasif-h)
 ✨ Happy Coding! ✨
 ```
 
-### How to Use:
-1. Create a new `README.md` file in your repository.
-2. Paste the above content.
-3. Commit and push the changes:
-   ```bash
-   git add README.md
-   git commit -m "Add README for Super Shop Billing System"
-   git push origin main
-   ```
