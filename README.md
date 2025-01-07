@@ -1,120 +1,101 @@
 
-# 🛒 **IUBAT Super Shop Billing System** 🧾
+# IUBAT Super Shop Billing System
 
-## 📜 **Overview**
-Welcome to the **Super Shop Billing System** developed as part of the university project in the **CSC 284** course, section **G**. This system allows users to easily manage their shopping experience with an interactive interface, where they can add items to the cart, view the total bill, and exit the program.
+## Project Overview
 
-🔧 **Technologies**: C++ | Object-Oriented Programming (OOP)
+The **IUBAT Super Shop Billing System** is a C++-based application designed to automate the billing process for a super shop. The system supports item addition, discount calculations, and total bill generation. It uses Object-Oriented Programming (OOP) principles to ensure efficiency, scalability, and ease of use.
 
-### 👨‍💻 **Author Information:**
-- **Author**: Md. Wasif Hossain
-- **Course**: CSC 284, Section G
-- **University ID**: 23303320
-- **Email**: wasif.hx@gmail.com
-- **GitHub Username**: [wasif-h](https://github.com/wasif-h)
+### Project Details
 
-## 🚀 **Features**
-- 🛍️ **Add Items to Cart**: Input item details such as name, price, and quantity.
-- 💰 **View Total Bill**: See the breakdown of items in the cart and the total cost.
-- 📑 **Bill Storage**: Item information is stored temporarily in a file (`totalbill.txt`) during the session.
-- 🧹 **File Cleanup**: The `totalbill.txt` file is automatically deleted after the program ends.
+- **Course**: CSC – 284
+- **Submitted To**: Abdullah Mohammad Sakib
+- **Department**: CSE
+- **Team Name**: Anonymous
+- **Team Members**: 1
+- **Project Name**: IUBAT Super Shop Billing System
+- **Technology**: C++
+- **Member Name**: Md. Wasif Hossain
+- **ID**: 23303320
+- **Department**: BCSE, Section G
 
-## 📝 **Requirements**
-- C++ compiler (e.g., GCC, MinGW, or any IDE that supports C++)
-- Windows or Linux-based OS for execution.
+## Project Structure
 
-## 📂 **How to Run the Program**
-1. Clone this repository to your local machine:
-    ```bash
-    git clone https://github.com/wasif-h/Super-Shop-Billing-System.git
-    ```
+The project is modular and adheres to Object-Oriented Programming principles. The main components are:
 
-2. Navigate to the project directory:
-    ```bash
-    cd Super-Shop-Billing-System
-    ```
+### 1. **Classes**:
+- **Bill**: The base class for handling general billing operations.
+- **DiscountBill**: A derived class that extends the Bill class to include discount logic.
 
-3. Compile the C++ code:
-    ```bash
-    g++ -o superShop main.cpp
-    ```
+### 2. **Functions**:
+- **addItemToCart(Bill&)**: Adds items to the shopping cart.
+- **printTotalBill()**: Displays the detailed bill, including discount calculations.
+- **main()**: Controls the flow of the program and handles user interaction.
 
-4. Run the compiled program:
-    ```bash
-    ./superShop
-    ```
+### 3. **File Handling**:
+- The project uses file I/O operations to save item details to a text file (`totalbill.txt`), ensuring smooth data handling.
 
-## 🧑‍💻 **Code Explanation**
-The program is structured with several key components:
-- **Bill Class**: Represents an item with attributes like name, price, and quantity.
-- **Main Menu**: Users can choose between adding items to the cart, viewing the total bill, or exiting the program.
-- **Add Item Function**: Collects item details and stores them in the `totalbill.txt` file.
-- **Print Total Bill Function**: Displays the items in the cart along with the total amount.
+## OOP Concepts Used
 
-## 🗂️ **File Handling**
-The system uses a text file `totalbill.txt` to temporarily store the cart information. This file is automatically deleted when the program finishes running.
+### 1. **Encapsulation**:
+- Private and protected attributes like `itemName`, `itemPrice`, and `itemQuantity` in the Bill class.
+- Getter and setter methods to control access to these attributes.
 
-## 📊 **Example of Bill Input**:
+### 2. **Inheritance**:
+- **DiscountBill** class inherits from **Bill**, allowing code reuse and functionality extension.
+
+### 3. **Polymorphism**:
+- The `calculateTotalCost()` method is overridden in **DiscountBill** to apply discounts.
+
+### 4. **Abstraction**:
+- High-level methods like `addItemToCart()` and `printTotalBill()` abstract complex logic for ease of use and maintenance.
+
+## Benefits of the Project
+
+- **Efficiency**: Automates the billing process, reducing human error and saving time.
+- **Flexibility**: Supports adding multiple items and applying customizable discounts.
+- **Scalability**: Easily extendable to include features like taxes, loyalty points, or barcode scanning.
+- **User-Friendly**: Simple menu-driven interface for smooth user interaction.
+
+## Sample Outputs
+
+1. **Start Shopping**
+   - Input: User enters item details (name, price, quantity).
+   - Output: Item is saved to `totalbill.txt` and a confirmation message is displayed.
+
+2. **View Total Bill**
+   - Input: User enters a discount percentage.
+   - Output: The system displays the item list, calculates the total before and after applying the discount.
+
+3. **Exit Program**
+   - Action: Program terminates, and the `totalbill.txt` file is deleted, clearing all saved data.
+
+## Handling User Inputs
+
+1. **Invalid Menu Option**:
+   - Input: A number outside the menu range.
+   - Output: Error message prompts re-entry.
+
+2. **Non-Numeric Input for Numeric Fields**:
+   - Input: Text instead of a number for price or quantity.
+   - Output: Program crashes (suggest input validation to prevent this).
+
+3. **Empty Input for Item Name**:
+   - Input: Pressing Enter without an item name.
+   - Output: Item added with an empty name (this can be enhanced).
+
+## Repository Link
+
+You can access the full project repository here:
+
+- **GitHub Repository**: [IUBAT Super Shop Billing System](https://github.com/wasif-h/Super-Shop-Billing-System.git)
+
+## Conclusion
+
+The IUBAT Super Shop Billing System demonstrates the practical application of OOP principles in C++. By incorporating features like discounts and file handling, this project showcases how C++ can be used for real-world solutions.
+
+---
+
+**Contact**:  
+Email: wasif.hx@gmail.com  
+©️ 2025 Wasif Hossain. All Rights Reserved.
 ```
-========================================
-            IUBAT SUPER SHOP
-========================================
- [1] Start Shopping
- [2] View Total Bill
- [3] Exit Program
-========================================
-Enter your choice: 
-========================================
-
-```
-## 📊 **Example of Selecting Option 1**:
-```
-========================================
-            Add to Cart Menu
-========================================
- [1] Add Item to Cart
- [2] Return to Main Menu
-========================================
-Enter your choice:
-
-```
-
-```
-========================================
-           Add Item Details
-========================================
-Enter item name: Coca Cola
-Enter item price: 45
-Enter item quantity: 3
-```
-
-
-
-## 📊 **Example of Selecting Option 2**:
-```
-========================================
-            View Total Bill
-========================================
- [1] View Bill
- [2] Return to Main Menu
-========================================
-Enter your choice:
-
-```
-
-## 📊 **Example of Bill Output**:
-```
-========================================
-            Items Purchased
-========================================
-Coca Cola - 45 x 3 = 135
-A4 Paper - 2 x 100 = 200
-========================================
-Total Amount: 335
-========================================
-
-```
-## 💬 **Contact**
-Feel free to reach out via email: **wasif.hx@gmail.com** if you have any questions.
-
-Thanks for using the **IUBAT Super Shop Billing System**! 🙌
